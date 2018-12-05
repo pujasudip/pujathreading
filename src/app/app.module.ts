@@ -8,6 +8,9 @@ import { OfferedServicesComponent } from './offered-services/offered-services.co
 import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
 
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './reducers/rootReducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,8 @@ import { ShopComponent } from './shop/shop.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({ messages: rootReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
