@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pujaThreading';
+  showMenu = false;
+
+  displaySubMenu() {
+    this.showMenu = !this.showMenu;
+    if (this.showMenu) {
+      document.getElementById('service-items').style.display = 'block';
+    } else {
+      document.getElementById('service-items').style.display = 'none';
+    }
+  }
 }
