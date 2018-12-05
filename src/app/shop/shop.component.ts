@@ -14,7 +14,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   observer;
 
   constructor(private store: Store<{messages: {}}>) {
-    this.messages$ = store.pipe(select('messages'));
+    this.messages$ = store.pipe(select('rootReducer'));
   }
 
   ngOnInit() {
