@@ -9,9 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
 
 import { StoreModule } from '@ngrx/store';
-import { rootReducer } from './reducers/rootReducer';
 import {UserloginService} from './userlogin.service';
 import {HttpClientModule } from '@angular/common/http';
+import {shopReducer} from './reducers/shopReducer';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import {HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({reducers: rootReducer})
+    StoreModule.forRoot({reducers: shopReducer})
   ],
   providers: [UserloginService],
   bootstrap: [AppComponent]

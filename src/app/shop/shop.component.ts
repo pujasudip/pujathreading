@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import { AddMessage, DelMessage, GetMessage } from '../actions';
-import {rootReducer} from '../reducers/rootReducer';
 import { shopReducer } from '../reducers/shopReducer';
 
 @Component({
@@ -15,8 +14,8 @@ export class ShopComponent implements OnInit, OnDestroy {
   data: string[];
   observer;
 
-  constructor(private store: Store<rootReducer>) {
-    this.messages = store.pipe(select(shopReducer));
+  constructor(private store: Store<{reducers: {}}>) {
+    this.messages = store.pipe(select('reducers'));
   }
 
   ngOnInit() {
