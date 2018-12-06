@@ -10,6 +10,8 @@ import { ShopComponent } from './shop/shop.component';
 
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducers/rootReducer';
+import {UserloginService} from './userlogin.service';
+import {HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import { rootReducer } from './reducers/rootReducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ messages: rootReducer })
+    HttpClientModule,
+    StoreModule.forRoot({reducers: rootReducer})
   ],
-  providers: [],
+  providers: [UserloginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

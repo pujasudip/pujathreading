@@ -5,6 +5,13 @@
  * Date: 12/4/18
  * Time: 11:53 PM
  */
-print('hello');
+
+header("Access-Control-Allow-Origin: *");
+
+$output = [
+  'message' => 'hello'
+];
+
+print(json_encode($output));
 
 ?>
