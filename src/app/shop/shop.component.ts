@@ -22,7 +22,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.observer = this.messages.subscribe(
       (data) => {
-        this.data = data.reducers.shopReducer.messages;
+        // this.data = data.reducers.shopReducer.messages;
       }
     );
   }
