@@ -29,9 +29,7 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": [
-              "../node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": [ ]
           },
           "configurations": {
             "production": {

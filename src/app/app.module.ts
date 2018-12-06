@@ -22,7 +22,7 @@ import { rootReducer } from './reducers/rootReducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ rootReducer: rootReducer })
+    StoreModule.forRoot({reducers: rootReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

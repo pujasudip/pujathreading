@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import { AddMessage, DelMessage, GetMessage } from '../actions';
+import {rootReducer} from '../reducers/rootReducer';
+import { shopReducer } from '../reducers/shopReducer';
 
 @Component({
   selector: 'app-shop',
@@ -9,18 +11,18 @@ import { AddMessage, DelMessage, GetMessage } from '../actions';
   styleUrls: ['./shop.component.sass']
 })
 export class ShopComponent implements OnInit, OnDestroy {
-  messages$: Observable<{}>;
+  messages: Observable<{messages: string[]}>;
   data: string[];
   observer;
 
-  constructor(private store: Store<{messages: {}}>) {
-    this.messages$ = store.pipe(select('rootReducer'));
+  constructor(private store: Store<rootReducer>) {
+    this.messages = store.pipe(select(shopReducer));
   }
 
   ngOnInit() {
-    this.observer = this.messages$.subscribe(
+    this.observer = this.messages.subscribe(
       (data) => {
-        this.data = data['messages'];
+        this.data = data.reducers.shopReducer.messages;
       }
     );
   }
@@ -38,7 +40,6 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('ob:', this.observer);
     this.observer.unsubscribe();
   }
 
