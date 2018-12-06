@@ -5,7 +5,6 @@ import {rootReducer} from '../reducers/rootReducer';
 import { GetUserInfo } from '../actions';
 import { HttpClient } from '@angular/common/http';
 import {UserloginService} from '../userlogin.service';
-import {loginReducer} from '../reducers/loginReducer';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +12,11 @@ import {loginReducer} from '../reducers/loginReducer';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-  userLoginInfo: Observable<{}>;
+  userLoginInfo: Observable<{loginReducer: {}}>;
   userLoggedIn = false;
 
-  constructor(private store: Store<rootReducer>, private userlogin: UserloginService) {
-    this.userLoginInfo = store.pipe(select(loginReducer));
+  constructor(private store: Store<{reducers: {}}>, private userlogin: UserloginService) {
+    this.userLoginInfo = store.pipe(select('reducers'));
   }
 
   ngOnInit() {

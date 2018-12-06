@@ -11,18 +11,18 @@ import { shopReducer } from '../reducers/shopReducer';
   styleUrls: ['./shop.component.sass']
 })
 export class ShopComponent implements OnInit, OnDestroy {
-  messages: Observable<{messages: string[]}>;
+  messages$: Observable<{shopReducer: {}}>;
   data: string[];
   observer;
 
-  constructor(private store: Store<rootReducer>) {
-    this.messages = store.pipe(select(shopReducer));
+  constructor(private store: Store<{reducers: {}}>) {
+    this.messages$ = store.pipe(select('reducers'));
   }
 
   ngOnInit() {
-    this.observer = this.messages.subscribe(
+    this.observer = this.messages$.subscribe(
       (data) => {
-        // this.data = data.reducers.shopReducer.messages;
+        this.data = data.shopReducer['messages'];
       }
     );
   }

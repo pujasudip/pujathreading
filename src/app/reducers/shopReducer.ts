@@ -12,6 +12,7 @@ export function shopReducer(state = initialState, action: Action) {
   switch (action.type) {
     case ActionTypes.ADD_MESSAGE:
       const msg = action['payload'].message;
+      console.log('msg:', state);
       return {...state, messages: [...state.messages, msg]};
     case ActionTypes.DELETE_MESSAGE:
       const newMessages = state.messages.slice();
