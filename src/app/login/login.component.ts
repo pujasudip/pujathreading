@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import {rootReducer} from '../reducers/rootReducer';
-import { GetUserInfo } from '../actions';
+import { UserInfo } from '../actions';
 import { HttpClient } from '@angular/common/http';
-import {UserloginService} from '../userlogin.service';
+import {UserloginService} from '../shared/userlogin.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,11 @@ import {UserloginService} from '../userlogin.service';
 export class LoginComponent implements OnInit {
   userLoginInfo: Observable<{loginReducer: {}}>;
   userLoggedIn = false;
+  username = '';
 
-  constructor(private store: Store<{reducers: {}}>, private userlogin: UserloginService) {
+  constructor(private store: Store<{reducers: {}}>,
+              private userloginService: UserloginService,
+              private route: Router) {
     this.userLoginInfo = store.pipe(select('reducers'));
   }
 
@@ -23,8 +27,15 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(username, password) {
-    // this.store.dispatch(new GetUserInfo({username: username, password: password}));
-    this.userlogin.userLogin(username, password);
+    this.userloginService.userLogin(username, password).subscribe(
+    (data) => {
+      if (data.success) {
+        this.userLoggedIn = true;
+        this.username = data['username'];
+        this.store.dispatch(new UserInfo({userloggedIn: true, username: this.username}));
+        this.route.navigate(['/home']);
+      }
+    }
+    );
   }
-
 }

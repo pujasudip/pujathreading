@@ -7,7 +7,8 @@ export enum ActionTypes {
   ADD_MESSAGE = 'ADD_MESSAGE',
   DELETE_MESSAGE = 'DELETE_MESSAGE',
   GET_MESSAGES = 'GET_MESSAGES',
-  USER_INFO = 'USER_INFO'
+  USER_INFO = 'USER_INFO',
+  LOG_OUT = 'LOG_OUT'
 }
 
 export class AddMessage implements Action {
@@ -29,29 +30,15 @@ export class GetMessage implements Action {
   readonly type = ActionTypes.GET_MESSAGES;
 }
 
-export class GetUserInfo implements Action {
+export class UserInfo implements Action {
   readonly type = ActionTypes.USER_INFO;
 
-  username: string;
-  password: string;
-
-  constructor(readonly payload: { username: string, password: string}) {
-      this.username = this.payload.username;
-      this.password = this.payload.password;
-      console.log('up:', this.username, this.password);
-      // this.getUserInfo();
+  constructor (readonly payload: { userloggedIn: boolean, username: string}) {
   }
+}
 
-  // getUserInfo() {
-  //   const params = new HttpParams();
-  //   params.append('username', this.username);
-  //   params.append('password', this.password);
-  //   this.httpClient.post(LOGIN_URL, params).subscribe(
-  //     (resp) => {
-  //       console.log('resp:', resp);
-  //     }
-  //   );
-  // }
+export class Logout implements Action {
+  readonly type = ActionTypes.LOG_OUT;
 }
 
 
