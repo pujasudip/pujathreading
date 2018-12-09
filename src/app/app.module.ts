@@ -10,8 +10,11 @@ import { ShopComponent } from './shop/shop.component';
 
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducers/rootReducer';
-import {UserloginService} from './userlogin.service';
+import {UserloginService} from './shared/userlogin.service';
 import {HttpClientModule } from '@angular/common/http';
+import { CustomDirectiveDirective } from './shared/custom-directive.directive';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,15 @@ import {HttpClientModule } from '@angular/common/http';
     HomeComponent,
     OfferedServicesComponent,
     LoginComponent,
-    ShopComponent
+    ShopComponent,
+    CustomDirectiveDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({reducers: rootReducer})
+    StoreModule.forRoot({reducers: rootReducer}),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [UserloginService],
   bootstrap: [AppComponent]
