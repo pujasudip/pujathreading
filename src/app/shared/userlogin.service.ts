@@ -15,11 +15,6 @@ export class UserloginService {
   constructor(private httpClient: HttpClient) { }
 
   userLogin(username: string, password: string): Observable<UserInfo> {
-    const params = new HttpParams();
-    // params.set('username', username);
-    params.append('username', username);
-    // params.append('password', password);
-    console.log('params:', params);
     return this.httpClient.post<UserInfo>(this.LOGIN_URL, null, {
       params: {
         username: username,

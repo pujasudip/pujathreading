@@ -37,7 +37,6 @@ export class AppComponent {
       (data) => {
         this.userLoggedIn = data['loginReducer'].loggedIn;
         this.username = data['loginReducer'].username;
-        console.log('datax:', data['loginReducer']);
       }
     );
   }

@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const formValues = form.value;
-    console.log('form:', formValues);
     this.userloginService.userLogin(formValues.username, formValues.password).subscribe(
     (data) => {
       if (data.success) {
