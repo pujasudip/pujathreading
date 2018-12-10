@@ -15,6 +15,8 @@ import {HttpClientModule } from '@angular/common/http';
 import { CustomDirectiveDirective } from './shared/custom-directive.directive';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { environment } from '../environments/environment';
     LoginComponent,
     ShopComponent,
     CustomDirectiveDirective,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     StoreModule.forRoot({reducers: rootReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],

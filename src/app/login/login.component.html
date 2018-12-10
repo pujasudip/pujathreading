@@ -1,16 +1,33 @@
 <div class="container">
   <div class="formContainer">
-    <form class="col-12">
+    <form class="col-12" (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" #username>
+        <label for="exampleInputEmail1">Username</label>
+        <input type="email" class="form-control"
+               id="exampleInputEmail1"
+               aria-describedby="emailHelp"
+               placeholder="Enter username"
+               ngModel
+               name="username"
+               required
+               #username="ngModel">
       </div>
+      <p *ngIf="username.invalid && username.touched" class="usernameError">Please enter username.</p>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #password>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+               ngModel
+               name="password"
+               required
+               #password="ngModel">
       </div>
-      <button type="button" class="btn btn-primary" (click)="userLogin(username.value, password.value)">Submit</button>
-      <button type="submit" class="btn btn-warning float-right">Cancel</button>
+      <p *ngIf="password.invalid && password.touched" class="passwordError">Password is not entered.</p>
+      <p class="loginError" *ngIf="loginError">Invalid username/password.</p>
+      <div class="signUpLink">
+        <a routerLink="/signup">Sign Up</a>
+      </div>
+      <button type="button" class="btn btn-primary" type="submit">Log In</button>
+      <button type="button" class="btn btn-warning float-right" (click)="cancelLogin()">Cancel</button>
     </form>
   </div>
 </div>
