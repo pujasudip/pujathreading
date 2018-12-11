@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
     this.userLoginInfo = store.pipe(select('reducers'));
   }
 
+  fieldOnFocus() {
+    this.loginError = false;
+  }
+
   ngOnInit() {
   }
 

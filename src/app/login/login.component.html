@@ -10,7 +10,8 @@
                ngModel
                name="username"
                required
-               #username="ngModel">
+               #username="ngModel"
+               (focus)="fieldOnFocus()">
       </div>
       <p *ngIf="username.invalid && username.touched" class="usernameError">Please enter username.</p>
       <div class="form-group">
@@ -19,7 +20,8 @@
                ngModel
                name="password"
                required
-               #password="ngModel">
+               #password="ngModel"
+               (focus)="fieldOnFocus()">
       </div>
       <p *ngIf="password.invalid && password.touched" class="passwordError">Password is not entered.</p>
       <p class="loginError" *ngIf="loginError">Invalid username/password.</p>
