@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
       if (data.success) {
         this.userLoggedIn = true;
         this.username = data['username'];
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('username', this.username);
         this.store.dispatch(new UserInfo({userloggedIn: true, username: this.username}));
         this.route.navigate(['/home']);
       } else {
@@ -48,7 +50,6 @@ export class LoginComponent implements OnInit {
   }
 
   cancelLogin() {
-    console.log('location: ', this.location);
     this.location.back();
   }
 }

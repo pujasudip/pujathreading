@@ -17,6 +17,10 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {FormsModule} from '@angular/forms';
+import { CosmeticsComponent } from './cosmetics/cosmetics.component';
+import { GiftCardsComponent } from './gift-cards/gift-cards.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import {AuthGuardService} from './auth-gaurd.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,9 @@ import {FormsModule} from '@angular/forms';
     ShopComponent,
     CustomDirectiveDirective,
     SignUpComponent,
+    CosmeticsComponent,
+    GiftCardsComponent,
+    AccountSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,7 @@ import {FormsModule} from '@angular/forms';
     StoreModule.forRoot({reducers: rootReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [UserloginService],
+  providers: [UserloginService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
