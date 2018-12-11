@@ -1,13 +1,35 @@
-<form>
-  <div>
-    <label>First Name:<input /></label>
-    <label>Last Name:<input /></label>
-  </div>
-  <div>
-    <label>Username: <input /></label>
-  </div>
-  <div>
-    <button>Sign Up</button>
-    <button>Cancel</button>
-  </div>
-</form>
+<div class="formContainer">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>First Name:</label><input formControlName="firstName" class="float-right"/>
+      <p *ngIf="!signUpForm.get('firstName').valid && signUpForm.get('firstName').touched" class="nameError">First Name required.</p>
+    </div>
+    <div>
+      <label>Last Name:</label><input formControlName="lastName" class="float-right"/>
+      <p *ngIf="!signUpForm.get('lastName').valid && signUpForm.get('lastName').touched" class="nameError">First Name required.</p>
+    </div>
+    <div>
+      <label>Email: <input formControlName="email"/></label>
+      <p *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched" class="emailError">Email is required.</p>
+    </div>
+    <div>
+      <label>Username: <input formControlName="username"/></label>
+      <p *ngIf="!signUpForm.get('username').valid && signUpForm.get('username').touched" class="usernameError">Username is required.</p>
+    </div>
+    <div>
+      <div>
+        <label>Password: <input type="password" formControlName="password"/></label>
+        <p *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched" class="passError">Password is required.</p>
+      </div>
+      <div>
+        <label>Confirm Password: <input type="password" formControlName="confirmPassword" (blur)="matchPassword()" (focus)="fieldOnFocus()"/></label>
+        <p *ngIf="!signUpForm.get('confirmPassword').valid && signUpForm.get('confirmPassword').touched" class="passError">Password required.</p>
+        <p *ngIf="!passwordMatch" class="passError">Password does not match.</p>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <button routerLink="/home" class="btn btn-primary float-right">Cancel</button>
+    </div>
+  </form>
+</div>
