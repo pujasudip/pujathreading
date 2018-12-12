@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { OfferedServicesComponent } from './offered-services/offered-services.component';
 import { LoginComponent } from './login/login.component';
-import { ShopComponent } from './shop/shop.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 
 import { StoreModule } from '@ngrx/store';
@@ -19,7 +18,8 @@ import { environment } from '../environments/environment';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import {AuthGuardService} from './auth-gaurd.service';
-import { ShopRoutingModule } from './shop/shop-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { ShopRoutingModule } from './shop/shop-routing.module';
     CustomDirectiveDirective,
     SignUpComponent,
     AccountSettingsComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ import { ShopRoutingModule } from './shop/shop-routing.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot({reducers: rootReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
