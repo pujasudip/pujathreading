@@ -5,18 +5,15 @@ import {OfferedServicesComponent} from './offered-services/offered-services.comp
 import {LoginComponent} from './login/login.component';
 import {ShopComponent} from './shop/shop.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
-import {CosmeticsComponent} from './cosmetics/cosmetics.component';
-import {GiftCardsComponent} from './gift-cards/gift-cards.component';
+import {CosmeticsComponent} from './shop/cosmetics/cosmetics.component';
+import {GiftCardsComponent} from './shop/gift-cards/gift-cards.component';
 import {AccountSettingsComponent} from './account-settings/account-settings.component';
 import {AuthGuardService} from './auth-gaurd.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'shop', component: ShopComponent, children: [
-      { path: 'cosmetics', component: CosmeticsComponent },
-      { path: 'giftcards', component: GiftCardsComponent }
-    ]},
+  { path: 'shop', loadChildren: './shop/shop.module#ShopModule' },
   { path: 'services', component: OfferedServicesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },

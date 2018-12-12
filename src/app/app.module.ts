@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { OfferedServicesComponent } from './offered-services/offered-services.component';
 import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
 
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducers/rootReducer';
@@ -15,12 +16,10 @@ import {HttpClientModule } from '@angular/common/http';
 import { CustomDirectiveDirective } from './shared/custom-directive.directive';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CosmeticsComponent } from './cosmetics/cosmetics.component';
-import { GiftCardsComponent } from './gift-cards/gift-cards.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import {AuthGuardService} from './auth-gaurd.service';
+import { ShopRoutingModule } from './shop/shop-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,11 +27,8 @@ import {AuthGuardService} from './auth-gaurd.service';
     HomeComponent,
     OfferedServicesComponent,
     LoginComponent,
-    ShopComponent,
     CustomDirectiveDirective,
     SignUpComponent,
-    CosmeticsComponent,
-    GiftCardsComponent,
     AccountSettingsComponent,
   ],
   imports: [
@@ -42,7 +38,7 @@ import {AuthGuardService} from './auth-gaurd.service';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({reducers: rootReducer}),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [UserloginService, AuthGuardService],
   bootstrap: [AppComponent]
