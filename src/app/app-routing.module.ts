@@ -10,6 +10,7 @@ import {GiftCardsComponent} from './shop/gift-cards/gift-cards.component';
 import {AccountSettingsComponent} from './account-settings/account-settings.component';
 import {AuthGuardService} from './auth-gaurd.service';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
+import {PageNotFoundComponent} from './404_Page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'account', canActivate: [AuthGuardService], component: AccountSettingsComponent },
   { path: 'shoppingcart', component: ShoppingCartComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

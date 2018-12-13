@@ -22,6 +22,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {ShortenPipe} from './shared/shorten.pipe';
 import {SignUpService} from './shared/sign-up.service';
+import {PageNotFoundComponent} from './404_Page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {SignUpService} from './shared/sign-up.service';
     SignUpComponent,
     AccountSettingsComponent,
     ShoppingCartComponent,
-    ShortenPipe
+    ShortenPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
