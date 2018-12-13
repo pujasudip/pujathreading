@@ -25,14 +25,14 @@ export class UserloginService {
 
   handleError (error: HttpErrorResponse) {
     if (error instanceof ErrorEvent) {
-      console.error('An error occured:', error.message);
+      console.error('An error occurred:', error.message);
     } else {
-      console.error(`Backend returned code ${error.status}, ` +
+      console.error(`Server error code: ${error.status}, ` +
       `body was: ${error.error}`);
     }
 
     return throwError(
-      'Something bad happened: please try again later.'
+      'Error occurred please try again later.'
     );
   }
 }

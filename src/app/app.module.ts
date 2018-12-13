@@ -20,6 +20,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import {AuthGuardService} from './auth-gaurd.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import {ShortenPipe} from './shared/shorten.pipe';
+import {SignUpService} from './shared/sign-up.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     SignUpComponent,
     AccountSettingsComponent,
     ShoppingCartComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     StoreModule.forRoot({reducers: rootReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [UserloginService, AuthGuardService],
+  providers: [UserloginService, AuthGuardService, SignUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SignUpService} from '../shared/sign-up.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,7 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   passwordMatch = true;
 
-  constructor() { }
+  constructor(private signUpService: SignUpService) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({
@@ -24,7 +25,12 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log('form:', this.signUpForm);
+    this.signUpService.accountCreation(this.signUpForm.value).subscribe(
+      (resp) => {
+        console.log('response:', resp);
+      }
+    );
+    // console.log('form:', this.signUpForm.value);
   }
 
   matchPassword() {

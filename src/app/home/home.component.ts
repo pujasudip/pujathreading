@@ -22,15 +22,30 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class HomeComponent implements OnInit {
-  iconState = 'normal';
+  iconStateFB = 'normal';
+  iconStateTW = 'normal';
+  iconStateIN = 'normal';
+  testText = 'this is a test';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  animateIcons() {
-    this.iconState === 'highlight' ? this.iconState = 'normal' : this.iconState = 'highlight';
+  animateIcons(icon) {
+    switch (icon) {
+      case 'FB':
+        this.iconStateFB === 'highlight' ? this.iconStateFB = 'normal' : this.iconStateFB = 'highlight';
+        break;
+      case 'TW':
+        this.iconStateTW === 'highlight' ? this.iconStateTW = 'normal' : this.iconStateTW = 'highlight';
+        return;
+      case 'IN':
+        this.iconStateIN === 'highlight' ? this.iconStateIN = 'normal' : this.iconStateIN = 'highlight';
+        return;
+      default:
+        return;
+    }
   }
 
 }
