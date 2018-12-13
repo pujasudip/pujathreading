@@ -23,6 +23,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {ShortenPipe} from './shared/shorten.pipe';
 import {SignUpService} from './shared/sign-up.service';
 import {PageNotFoundComponent} from './404_Page.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import {PageNotFoundComponent} from './404_Page.component';
     StoreModule.forRoot({reducers: rootReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [UserloginService, AuthGuardService, SignUpService],
+  providers: [UserloginService, AuthGuardService, SignUpService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
