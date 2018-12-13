@@ -33,17 +33,24 @@ export class AppComponent {
   }
 
   userState () {
-    this.userInfo.subscribe(
-      (data) => {
-        this.userLoggedIn = data['loginReducer'].loggedIn;
-        this.username = data['loginReducer'].username;
-        console.log('datax:', data['loginReducer']);
-      }
-    );
+    if (localStorage.getItem('loggedIn') === 'true') {
+        this.userLoggedIn = true;
+        this.username = localStorage.getItem('username');
+    } else {
+      this.userInfo.subscribe(
+        (data) => {
+          this.userLoggedIn = data['loginReducer'].loggedIn;
+          this.username = data['loginReducer'].username;
+        }
+      );
+    }
   }
 
   logout() {
+    localStorage.setItem('loggedIn', 'false');
+    localStorage.setItem('username', '');
     this.store.dispatch(new Logout());
+    this.username = '';
     this.router.navigate(['/home']);
   }
 }

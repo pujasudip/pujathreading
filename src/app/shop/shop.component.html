@@ -1,8 +1,19 @@
-<div class="shopContainer">
-  <div class="shopItem">
-    <button (click)="getMessages()">Get Messages</button>
-    <input #msg/>
-    <button (click)="addMessage(msg.value)">Send Messages</button>
+<!--<div class="shopContainer">-->
+  <!--<div class="shopItem">-->
+    <!--<button (click)="getMessages()">Get Messages</button>-->
+    <!--<input #msg/>-->
+    <!--<button (click)="addMessage(msg.value)">Send Messages</button>-->
+  <!--</div>-->
+  <!--<div *ngFor="let message of data; let num = index" (click)="delMessage(num)">{{message}}</div>-->
+<!--</div>-->
+<div class="leftSection">
+  <div class="cosmetics" routerLink="cosmetics">
+    Cosmetics
   </div>
-  <div *ngFor="let message of data; let num = index" (click)="delMessage(num)">{{message}}</div>
+  <div class="giftCards" routerLink="giftcards">
+    Gift Cards
+  </div>
+</div>
+<div class="productsList">
+  <router-outlet></router-outlet>
 </div>

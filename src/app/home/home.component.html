@@ -14,13 +14,16 @@
     </div>
     <div class="social">
       <span class="facebookIcon">
-        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        <i class="fa fa-facebook-square" aria-hidden="true"
+           (mouseenter)="animateIcons('FB')"  (mouseleave)="animateIcons('FB')" [@iconHover]="iconStateFB"></i>
       </span>
       <span class="twitterIcon">
-        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+        <i class="fa fa-twitter-square" aria-hidden="true"
+           (mouseenter)="animateIcons('TW')"  (mouseleave)="animateIcons('TW')" [@iconHover]="iconStateTW"></i>
       </span>
       <span class="instagramIcon">
-        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"
+           (mouseenter)="animateIcons('IN')"  (mouseleave)="animateIcons('IN')" [@iconHover]="iconStateIN"></i>
       </span>
     </div>
   </div>

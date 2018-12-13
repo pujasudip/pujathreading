@@ -1,0 +1,24 @@
+<div class="shoppingList container">
+  <table class="table table-striped">
+    <tr>
+      <th>No.</th>
+      <th>Particulars</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th class="delItem"></th>
+    </tr>
+    <tr *ngFor="let item of shoppingList; let num = index">
+      <td>{{num + 1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.qty}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.amount}}</td>
+      <td class="delItem"><i class="fa fa-trash"></i></td>
+    </tr>
+    <tr>
+      <th colspan="4">Total</th>
+      <th colspan="2">1000</th>
+    </tr>
+  </table>
+</div>
