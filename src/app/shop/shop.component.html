@@ -7,13 +7,13 @@
   <!--<div *ngFor="let message of data; let num = index" (click)="delMessage(num)">{{message}}</div>-->
 <!--</div>-->
 <div class="leftSection">
-  <div class="cosmetics" routerLink="cosmetics">
+  <div class="cosmetics" routerLink="cosmetics" (click)="animateRouter()">
     Cosmetics
   </div>
-  <div class="giftCards" routerLink="giftcards">
+  <div class="giftCards" routerLink="giftcards" (click)="animateRouter()">
     Gift Cards
   </div>
 </div>
-<div class="productsList">
+<div class="productsList" [@slideComp]="initialAnimation">
   <router-outlet></router-outlet>
 </div>

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Logout} from './actions';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'pujaThreading';
   showMenu = false;
   userLoggedIn = false;
@@ -21,6 +21,19 @@ export class AppComponent {
     this.userInfo = store.pipe(select('reducers'));
     this.userState();
 
+  }
+
+  ngOnInit() {
+    window.addEventListener('click', (e) => {
+      const nonMenuClick = document.getElementById('service-items');
+      if (e.target['id'] !== 'navbarDropdown') {
+        nonMenuClick.style.display = 'none';
+      } else {
+        // nonMenuClick.style.display = 'block';
+        this.displaySubMenu();
+      }
+    });
+    console.log('route:', this.router);
   }
 
   displaySubMenu() {
