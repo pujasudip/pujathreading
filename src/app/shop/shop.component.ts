@@ -9,7 +9,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.sass'],
+  styleUrls: ['./shop.component.scss'],
   animations: [
     trigger('slideComp', [
       state('normal', style({
