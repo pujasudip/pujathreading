@@ -1,7 +1,4 @@
 import { Action } from '@ngrx/store';
-import {HttpClient, HttpParams} from '@angular/common/http';
-
-const LOGIN_URL = '/userAccounts.php';
 
 export enum ActionTypes {
   ADD_MESSAGE = 'ADD_MESSAGE',
